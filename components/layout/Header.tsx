@@ -18,8 +18,8 @@ const Header = () => {
         </h1>
       </Link>
       <div className='px-5 flex space-x-2 items-center'>
-        <UserButton afterSignOutUrl='/'/>
         <ThemeToggler/>
+        <UserButton afterSignOutUrl='/'/>
         <SignedOut>
             <SignInButton afterSignInUrl='/dasboard' mode='modal'/>
         </SignedOut>
