@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import Header from '@/components/layout/Header'
 import { ThemeProvider } from '@/components/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
+import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
   title: 'Files For All',
@@ -28,6 +29,8 @@ export default function RootLayout({
         >
         <Header/>
         {children}
+
+        <Toaster/>
         </ThemeProvider>
         
         </body>

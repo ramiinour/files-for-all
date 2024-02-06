@@ -4,7 +4,7 @@ import {auth} from '@clerk/nextjs'
 import { db } from '@/firebase'
 import { FileType } from '@/typings'
 import { collection , getDocs } from 'firebase/firestore'
-import TableWrapper from '@/components/dashboard/TableWrapper'
+import TableWrapper from '@/components/table/TableWrapper'
 
 
 async function Dashboard () {

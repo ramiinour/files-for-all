@@ -6,6 +6,11 @@ import { useUser } from '@clerk/nextjs'
 import { addDoc,collection,serverTimestamp ,updateDoc,doc} from 'firebase/firestore'
 import { db, storage } from '@/firebase'
 import {ref,uploadBytes ,getDownloadURL} from 'firebase/storage'
+import toast from "react-hot-toast"
+
+
+
+
 const DropZone = () => {
   const [loading,setLoading] = useState<boolean>(false)
   const {isLoaded,isSignedIn,user} = useUser()
@@ -28,6 +33,7 @@ const DropZone = () => {
          if(loading) return 
          if(!user) return 
          setLoading(true)
+         const toastId = toast.loading("Uploading...")
          ///
          const docRef = await addDoc(collection(db,"users",user.id,"files"),{
           userId: user.id,
@@ -41,7 +47,7 @@ const DropZone = () => {
 
          const imageRef = ref(storage,`users/${user.id}/files/${docRef.id}`)
          
-          uploadBytes(imageRef,selectedFile).then(async (snapshot)=>{
+          uploadBytes(imageRef,selectedFile).then(async (snapshot)=> {
           const donwnloadURL = await getDownloadURL(imageRef)
           await updateDoc(doc(db,"users",user.id,"files",docRef.id),{
             donwnloadURL:donwnloadURL
@@ -50,6 +56,9 @@ const DropZone = () => {
           })
 
          setLoading(false)
+         toast.success("Uploaded Successfully", {
+          id:toastId
+         })
   }
   
   const maxSize = 20971520

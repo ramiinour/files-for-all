@@ -46,7 +46,10 @@ export const columns: ColumnDef<FileType>[] = [
   {
     accessorKey:"downloadUrl",
     header:'Link',
-    cell: ({renderValue,...props})=> (
+    cell: ({renderValue,...props})=> {
+      const downloadUrl = renderValue() as string
+      return downloadUrl && (
+      
         <Link
         href={renderValue() as string}
         target="_blank"
@@ -54,7 +57,8 @@ export const columns: ColumnDef<FileType>[] = [
         >
             Download
         </Link>
-    )
+    ) 
+    }
   }
 
 ]
