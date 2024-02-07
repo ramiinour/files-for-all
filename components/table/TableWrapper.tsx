@@ -82,15 +82,12 @@ return (
 )
 
 
-
-
-
 return (
     <div className='flex flex-col space-y-5 pb-10'>
         <Button
         variant={"outline"}
          onClick={()=> setSort(sort === 'desc'? "asc":"desc")}
-        className='ml-aut0 w-fit'
+        className='ml-auto w-fit'
         >
           Sort By {sort === "asc"? "Newest":"Oldest"}
           </Button>
